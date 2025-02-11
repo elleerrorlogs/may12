@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mây</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8a5c2; /* Nền hồng */
+            color: #000; /* Màu chữ đen */
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://mega.com.vn/media/news/2905_hinh-nen-may-tinh-sieu-chill-sac-net-4K.jpg'); /* Thêm hình nền nếu muốn */
+            background-size: cover;
+            background-position: center;
+            animation: fadeInBackground 3s ease-out;
+        }
+
+        h1 {
+            color: #e74c3c; /* Màu chữ đỏ cho phần nội dung */
+            font-size: 30px;
+            animation: fadeInText 3s ease-out;
+        }
+
+        .container {
+            margin-top: 50px;
+            position: relative;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Nền khung trắng sáng hơn */
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px; /* Đảm bảo khung chữ không quá rộng */
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInContent 2s ease-out;
+        }
+
+        /* Hiệu ứng fade-in */
+        @keyframes fadeInBackground {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInContent {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: fadeInText 4s ease-out;
+        }
+
+        .button:hover {
+            background-color: #c0392b;
+            transform: scale(1.1); /* Tạo hiệu ứng phóng to nhẹ */
+        }
+
+        /* Đặt nút "Có" và "Không" cạnh nhau */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Đảm bảo các nút không bị dính sát nhau */
+        .yesBtn, .noBtn {
+            margin: 0 20px; /* Thêm khoảng cách giữa các nút */
+        }
+
+        .noBtn {
+            cursor: pointer;
+        }
+
+        /* Tắt hiệu ứng di chuyển cho nút "Không" mặc định */
+        .noBtn.disabled {
+            visibility: hidden;
+        }
+
+        /* Thẻ nhạc YouTube */
+        .music-container {
+            margin-top: 50px;
+            width: 80%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .music-container iframe {
+            width: 100%;
+            height: 450px; /* Phóng to khung YouTube */
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mây!</h1>
+        <p>Mình làm bạn nhé</p>
+        <p>Cảm ơn mây vì tất cả những khoảnh khắc tuyệt vời mà chúng ta đã trải qua.</p>
+        <p><strong>Cảm ơn mây vì tất cả!</strong></p>
+        
+        <p>Mây có đồng nhắn với trường không?</p>
+        
+        <!-- Nút "Có" và "Không" -->
+        <div class="buttons-container">
+            <button class="button yesBtn" id="yesBtn" onclick="handleYes()">Có</button>
+            <button class="button noBtn" id="noBtn" onclick="handleNo()" onmouseover="moveButton()">Không</button>
+        </div>
+    </div>
+
+    <!-- Thẻ nhạc YouTube (Đã phóng to và cách biệt khung chữ) -->
+    <div class="music-container">
+        <iframe src="https://www.youtube.com/embed/eBXaaukOvHg?autoplay=1&loop=1&playlist=eBXaaukOvHg" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Hàm khi người dùng chọn "Có"
+        function handleYes() {
+            window.location.href = "https://www.youtube.com/watch?v=eBXaaukOvHg&list=RDeBXaaukOvHg&start_radio=1";
+        }
+
+        // Hàm khi người dùng chọn "Không"
+        function handleNo() {
+            // Khi người dùng nhấn nút "Không", nút sẽ bị vô hiệu và không thể nhấn lại
+            const noBtn = document.getElementById("noBtn");
+            noBtn.classList.add("disabled");
+            alert("Anh sẽ không bỏ cuộc đâu, Mây!");
+        }
+
+        // Hàm di chuyển nút "Không" ngẫu nhiên khi người dùng di chuột vào
+        function moveButton() {
+            const noBtn = document.getElementById("noBtn");
+            
+            // Tạo vị trí ngẫu nhiên trên màn hình
+            const randomX = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+            
+            // Đặt lại vị trí của nút "Không"
+            noBtn.style.position = "absolute";
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        // Đảm bảo rằng nút "Không" không thể nhấn được và sẽ di chuyển khi di chuột vào
+        document.getElementById("noBtn").addEventListener('click', function(e) {
+            e.preventDefault(); // Ngừng hành động mặc định khi nút "Không" bị click
+            alert("Anh sẽ không bỏ cuộc đâu, Mây!");
+        });
+    </script>
+</body>
+</html>
